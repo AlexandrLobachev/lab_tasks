@@ -16,7 +16,11 @@ def open_json(path: str) -> Dict:
 
 def save_json(path: str, data: Dict) -> None:
     """Сохраняет данные в JSON файл."""
-    with open(file=path, mode='w', encoding='utf-8') as file:
+    if path[-1] == '\\':
+        path_and_filename = f'{path}report.json'
+    else:
+        path_and_filename = f'{path}\\report.json'
+    with open(file=path_and_filename, mode='w', encoding='utf-8') as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
 
 
